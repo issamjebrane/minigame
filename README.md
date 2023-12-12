@@ -18,8 +18,9 @@ Make sure you have Node.js and npm installed on your machine.
    git clone https://github.com/your-username/your-project.git
 2. Navigate to the project directory:
    launch these commands on your terminal:
-     -cd minigame
-     -npm install
-     -npm run dev
+   - cd minigame
+   - npm install
+   - npm run dev
+
    
 
