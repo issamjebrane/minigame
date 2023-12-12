@@ -12,6 +12,13 @@ import { OnboardingCss2 } from './css/Onboarding2';
 import { OnboardingCss3 } from './css/Onboarding3';
 import { OnboardingCss4 } from './css/Onboarding4';
 import { OnboardingHtml1 } from './html/Onboarding1';
+import { extendTheme } from '@chakra-ui/react';
+
+export const theme = extendTheme({
+  colors: {
+    customBlue: '#2c2c68', // Define a custom color similar to rgb(44, 44, 104)
+  },
+});
 
 const Home = ()=>{
   return (

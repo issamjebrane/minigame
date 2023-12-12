@@ -5,7 +5,7 @@ export const Button: React.FC<{name:string,Icon:React.FC}> = ({name,Icon}) => {
         
     }
     return (
-    <Link to={`/${name}/onboarding${name}1`} onClick={goToQuiz}>
+    <Link to={`/${name}/onboarding${name}1`} onClick={goToQuiz} className="link">
         <Icon/>
         {name}
     </Link>

@@ -1,13 +1,10 @@
-import { Checkbox } from '@mui/material'
 import React from 'react'
-
-export const  Question = () => {
-    const check = ()=>{
-    }
+import { Radio } from '@chakra-ui/react'
+export const  Question : React.FC<{value:string}> = ({value}) => {
+  
   return (
-    <label className='question'>
-        <Checkbox/>
-        <p className='questionText'>HyperText Markup Language</p>
-    </label>
+    <div className='question'  >
+        <Radio value={value} size='lg' colorScheme='teal'>{value}</Radio>
+    </div>
   )
 }

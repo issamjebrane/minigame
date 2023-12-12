@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-size: 1.5rem;
+  --main-color: rgb(44, 44, 104);
 }
 
 .main{
@@ -26,38 +28,45 @@
   cursor: pointer;
   transition:  background .4s ease ;
 }
-
-.buttons *:hover{
-  background-color: rgb(44, 44, 66);
+.link{
+  text-decoration: none;
 }
-.htmlOnboarding{
+.link:visited{
+  color: white;
+}
+.buttons *:hover{
+  background-color: var(--main-color);
+}
+.onboarding{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  cursor: pointer;
+  align-items: stretch;
+  gap: 20px;
 }
-.circle{
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  border: 2px solid rgb(44, 44, 104);
-  background-color: white;
-  background-clip: padding-box;
-  transition: background .5s ease;
+.onboarding h1{
+  font-weight: 600;
 }
 .question{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 2px solid rgb(44, 44, 104);
-  padding: 10px 100px 10px 10px;
+  border: 2px solid var(--main-color);
+  padding: 15px 0 15px 10px;
   text-align: justify;
   margin-bottom: 20px;
+  cursor: pointer;
 }
-.questionText{
+.question *{
+  width: 100%;
 }
-.circle:hover{
-  background-color: rgb(44, 44, 104);
+.navigation{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+input:hover{
+  background-color: var(--main-color);
 }
 @media (max-width:800px) {
   .main{
