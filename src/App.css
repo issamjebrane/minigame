@@ -1,28 +1,37 @@
 #root {
-  max-width: 1280px;
+  width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   font-size: 1.5rem;
-  --main-color: rgb(44, 44, 104);
+  --main-color: #2c2c68;
 }
 
 .main{
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 20px;
+  width: 100%;
+}
+.header{
+  flex: 1;
+  font-weight: 600;
 }
 .buttons{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  flex:2 ;
   gap: 10px;
 }
 .buttons *{
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  background-color: rgb(44, 44, 104);
+  background-color: rgb(66, 66, 101);
   padding: 10px;
+  font-size: 3rem;
   border-radius: 5px;
   font-weight: 800;
   cursor: pointer;
@@ -65,9 +74,7 @@
   align-items: center;
   width: 100%;
 }
-input:hover{
-  background-color: var(--main-color);
-}
+
 @media (max-width:800px) {
   .main{
     flex-direction: column;

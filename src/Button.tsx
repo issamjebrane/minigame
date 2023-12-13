@@ -7,7 +7,9 @@ export const Button: React.FC<{name:string,Icon:React.FC}> = ({name,Icon}) => {
     return (
     <Link to={`/${name}/onboarding${name}1`} onClick={goToQuiz} className="link">
         <Icon/>
-        {name}
+        <h6 style={{fontSize:"20px",width:"100%",background:"inherit"}}>
+          {name}
+        </h6>
     </Link>
   )
 }

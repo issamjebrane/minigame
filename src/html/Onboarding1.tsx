@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Question } from "./Question"
-import { Button, RadioGroup } from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, RadioGroup } from '@chakra-ui/react'
 import { useNavigate } from "react-router";
+import { CounterContext } from "../App";
 
 export const OnboardingHtml1 = () => {
   const [value, setValue] = useState('');
+  const [isValueSelected,setIsValueSelected] = useState(false);
+  const values = useContext(CounterContext);
   const goodAnswer = "Hyper Text Markup Language";
   const answers:string[] = [
     "Hyper Text Markup Language",
@@ -14,12 +17,25 @@ export const OnboardingHtml1 = () => {
   ]
   const navigate = useNavigate();
   const getValue= ()=>{
-    const isGood = (value === goodAnswer);
-    navigate('/Html/onboardingHtml2',{state:{isGood}});
+    if(value === ''){
+      setIsValueSelected(true);
+      return;
+    }
+    if(value === goodAnswer){
+      values?.setCounter(prev=>prev+1);
+    }
+    navigate('/Html/onboardingHtml2');
   }
+
 
   return (
     <div className="onboarding">
+      {isValueSelected &&
+        <Alert status='error'>
+        <AlertIcon />
+        please select an answer
+      </Alert>
+      }
       <h1>What is Html:</h1>
       <RadioGroup onChange={setValue} value={value}>     
           {answers.map((answer,index)=>{

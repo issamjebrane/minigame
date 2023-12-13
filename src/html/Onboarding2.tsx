@@ -1,13 +1,14 @@
-import { RadioGroup } from '@chakra-ui/radio';
-import  { useState } from 'react'
+import { Button, RadioGroup } from '@chakra-ui/react'
+import  { useContext, useState } from 'react'
 import { Question } from './Question';
-import { Button } from '@chakra-ui/button';
-import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
+import { CounterContext } from '../App';
 
 export const OnboardingHtml2 = () => {
   const [value, setValue] = useState('');
-  const {state} = useLocation();
-  console.log(state.isGood)
+  const values = useContext(CounterContext);
+  const navigate = useNavigate();
+  
   const goodAnswer = "<ul>";
   const answers:string[] = [
     "<ul>",
@@ -15,11 +16,14 @@ export const OnboardingHtml2 = () => {
     "<li>",
     "<list>"
   ]
-  
   const getValue= ()=>{
-    console.log(value);
-  }
+    if(value === goodAnswer){
+      values?.setCounter(prev=>prev+1);
+    }
+    navigate('/Html/onboardingHtml3');  
+    }
 
+    
   return (
     <div className="onboarding">
       <h1>Which HTML tag is used to define an unordered list ?</h1>

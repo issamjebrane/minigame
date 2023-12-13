@@ -12,18 +12,18 @@ import { OnboardingCss2 } from './css/Onboarding2';
 import { OnboardingCss3 } from './css/Onboarding3';
 import { OnboardingCss4 } from './css/Onboarding4';
 import { OnboardingHtml1 } from './html/Onboarding1';
-import { extendTheme } from '@chakra-ui/react';
+import { createContext, useState } from 'react';
 
-export const theme = extendTheme({
-  colors: {
-    customBlue: '#2c2c68', // Define a custom color similar to rgb(44, 44, 104)
-  },
-});
 
+interface CounterContextType {
+  counter: number;
+  setCounter: React.Dispatch<React.SetStateAction<number>>;
+}
+export const CounterContext = createContext<CounterContextType|undefined>(undefined);
 const Home = ()=>{
   return (
     <div className='main'>
-    <div>
+    <div className='header'>
       <h1>       
         Welcome to the Quiz App
       </h1>
@@ -39,23 +39,29 @@ const Home = ()=>{
 }
 
 function App() {
-
+  const [counter, setCounter] = useState<number>(0);
+  const contextValue: CounterContextType = {
+    counter,
+    setCounter,
+  };
   return (
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/Html'>
-        <Route path='onboardingHtml1' element={<OnboardingHtml1/>}/>
-        <Route path='onboardingHtml2' element={<OnboardingHtml2 />}/>
-        <Route path='onboardingHtml3' element={<OnboardingHtml3/>}/>
-        <Route path='onboardingHtml4' element={<OnboardingHtml4/>}/>
-      </Route> 
-      <Route path='/Css'>
-        <Route path='onboardingCss1' element={<OnboardingCss1/>}/>
-        <Route path='onboardingCss2' element={<OnboardingCss2 />}/>
-        <Route path='onboardingCss3' element={<OnboardingCss3/>}/>
-        <Route path='onboardingCss4' element={<OnboardingCss4/>}/>
-        </Route>
-    </Routes>
+    <CounterContext.Provider value={contextValue}>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/Html'>
+          <Route path='onboardingHtml1' element={<OnboardingHtml1/>}/>
+          <Route path='onboardingHtml2' element={<OnboardingHtml2 />}/>
+          <Route path='onboardingHtml3' element={<OnboardingHtml3/>}/>
+          <Route path='onboardingHtml4' element={<OnboardingHtml4/>}/>
+        </Route> 
+        <Route path='/Css'>
+          <Route path='onboardingCss1' element={<OnboardingCss1/>}/>
+          <Route path='onboardingCss2' element={<OnboardingCss2 />}/>
+          <Route path='onboardingCss3' element={<OnboardingCss3/>}/>
+          <Route path='onboardingCss4' element={<OnboardingCss4/>}/>
+          </Route>
+      </Routes>
+    </CounterContext.Provider>
   )
 }
 
