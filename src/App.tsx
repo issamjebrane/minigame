@@ -12,13 +12,14 @@ import { OnboardingCss2 } from './css/Onboarding2';
 import { OnboardingCss3 } from './css/Onboarding3';
 import { OnboardingCss4 } from './css/Onboarding4';
 import { OnboardingHtml1 } from './html/Onboarding1';
-import { createContext, useState } from 'react';
+import { Suspense, createContext, lazy, useState } from 'react';
 
 
 interface CounterContextType {
   counter: number;
   setCounter: React.Dispatch<React.SetStateAction<number>>;
 }
+const LazyResult = lazy(() => import('./html/Result'));
 export const CounterContext = createContext<CounterContextType|undefined>(undefined);
 const Home = ()=>{
   return (
@@ -44,6 +45,7 @@ function App() {
     counter,
     setCounter,
   };
+
   return (
     <CounterContext.Provider value={contextValue}>
       <Routes>
@@ -53,6 +55,11 @@ function App() {
           <Route path='onboardingHtml2' element={<OnboardingHtml2 />}/>
           <Route path='onboardingHtml3' element={<OnboardingHtml3/>}/>
           <Route path='onboardingHtml4' element={<OnboardingHtml4/>}/>
+          <Route path='result' element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyResult />
+          </Suspense>
+        } />
         </Route> 
         <Route path='/Css'>
           <Route path='onboardingCss1' element={<OnboardingCss1/>}/>

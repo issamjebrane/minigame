@@ -1,4 +1,4 @@
-import { Button, RadioGroup } from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, RadioGroup } from '@chakra-ui/react'
 import  { useContext, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { CounterContext } from '../App';
@@ -10,6 +10,7 @@ export const OnboardingHtml3 = () => {
   const [value, setValue] = useState('');
   const navigate = useNavigate();
   const values = useContext(CounterContext);
+  const [isValueSelected,setIsValueSelected] = useState(false);
   const goodAnswer = "Image";
   const answers:string[] = [
     "Image",
@@ -18,6 +19,10 @@ export const OnboardingHtml3 = () => {
     "Insert image"
   ]
   const getValue= ()=>{
+    if(value === ''){
+      setIsValueSelected(true);
+      return;
+    }
     if(value === goodAnswer){
       values?.setCounter(prev=>prev+1);
     }
@@ -26,6 +31,12 @@ export const OnboardingHtml3 = () => {
 
   return (
     <div className="onboarding">
+      {isValueSelected &&
+        <Alert status='error'>
+        <AlertIcon />
+        please select an answer
+      </Alert>
+      }
       <h1>
         What does the {"<img>"} tag stand for in HTML?
       </h1>

@@ -1,4 +1,4 @@
-import { Button, RadioGroup } from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, RadioGroup } from '@chakra-ui/react'
 import  { useContext, useState } from 'react'
 import { Question } from './Question';
 import { useNavigate } from 'react-router';
@@ -6,6 +6,7 @@ import { CounterContext } from '../App';
 
 export const OnboardingHtml2 = () => {
   const [value, setValue] = useState('');
+  const [isValueSelected,setIsValueSelected] = useState(false);
   const values = useContext(CounterContext);
   const navigate = useNavigate();
   
@@ -17,6 +18,10 @@ export const OnboardingHtml2 = () => {
     "<list>"
   ]
   const getValue= ()=>{
+    if(value === ''){
+      setIsValueSelected(true);
+      return;
+    }
     if(value === goodAnswer){
       values?.setCounter(prev=>prev+1);
     }
@@ -26,6 +31,12 @@ export const OnboardingHtml2 = () => {
     
   return (
     <div className="onboarding">
+      {isValueSelected &&
+        <Alert status='error'>
+        <AlertIcon />
+        please select an answer
+      </Alert>
+      }
       <h1>Which HTML tag is used to define an unordered list ?</h1>
       <RadioGroup onChange={setValue} value={value}>     
           {answers.map((answer,index)=>{
