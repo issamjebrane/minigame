@@ -7,12 +7,9 @@ import { Route, Routes } from 'react-router-dom';
 import {OnboardingHtml2 } from './html/Onboarding2';
 import {OnboardingHtml3 } from './html/Onboarding3';
 import { OnboardingHtml4 } from './html/Onboarding4';
-import { OnboardingCss1 } from './css/Onboarding1';
-import { OnboardingCss2 } from './css/Onboarding2';
-import { OnboardingCss3 } from './css/Onboarding3';
-import { OnboardingCss4 } from './css/Onboarding4';
 import { OnboardingHtml1 } from './html/Onboarding1';
 import { Suspense, createContext, lazy, useState } from 'react';
+import { Css } from './css/Css';
 
 
 interface CounterContextType {
@@ -61,12 +58,7 @@ function App() {
           </Suspense>
         } />
         </Route> 
-        <Route path='/Css'>
-          <Route path='onboardingCss1' element={<OnboardingCss1/>}/>
-          <Route path='onboardingCss2' element={<OnboardingCss2 />}/>
-          <Route path='onboardingCss3' element={<OnboardingCss3/>}/>
-          <Route path='onboardingCss4' element={<OnboardingCss4/>}/>
-          </Route>
+        <Route path='/Css/onboardingCss1' element={<Css/>}/>
       </Routes>
     </CounterContext.Provider>
   )
