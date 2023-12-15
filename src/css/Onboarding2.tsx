@@ -9,7 +9,7 @@ export const OnboardingCss2 = () => {
   const [isValueSelected,setIsValueSelected] = useState(false);
   const incrementor = useContext(IncrementingContext);
   const values = useContext(CounterContext);
-  const goodAnswer = "font-style: bold";
+  const goodAnswer = "font-weight: bold";
   const answers:string[] = [
     "text-style: bold",
     "font-weight: bold",
@@ -22,7 +22,11 @@ export const OnboardingCss2 = () => {
       return;
     }
     if(value === goodAnswer){
-      values?.setCounter(prev=>prev+1);
+      values?.setCounter(prev=>{
+        const count = prev+1;
+        console.log(count)
+        return count
+      });
     }
     incrementor.setIncrementing(prev=>prev+1);
   }

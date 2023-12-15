@@ -1,9 +1,10 @@
-import React, { Dispatch, SetStateAction, createContext, useState } from 'react'
+import React, { Dispatch, SetStateAction, createContext, useContext, useEffect, useState } from 'react'
 import { OnboardingCss1 } from './Onboarding1'
 import { OnboardingCss2 } from './Onboarding2';
 import { OnboardingCss3 } from './Onboarding3';
 import { OnboardingCss4 } from './Onboarding4';
 import Result from './Result';
+import { CounterContext } from '../App';
 
 //@ts-ignore
 export const IncrementingContext = createContext<{
@@ -13,7 +14,11 @@ export const IncrementingContext = createContext<{
 
 export const  Css= () => {
     const [incrementing,setIncrementing] = useState(1);
+    const value = useContext(CounterContext);
 
+    useEffect(()=>{
+        window.onbeforeunload
+    },[value?.counter])
   return (
     // @ts-ignore
     <IncrementingContext.Provider value={{incrementing,setIncrementing}}>

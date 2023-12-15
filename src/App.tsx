@@ -8,7 +8,7 @@ import {OnboardingHtml2 } from './html/Onboarding2';
 import {OnboardingHtml3 } from './html/Onboarding3';
 import { OnboardingHtml4 } from './html/Onboarding4';
 import { OnboardingHtml1 } from './html/Onboarding1';
-import { Suspense, createContext, lazy, useState } from 'react';
+import { Suspense, createContext, lazy, useContext, useEffect, useState } from 'react';
 import { Css } from './css/Css';
 
 
@@ -19,6 +19,10 @@ interface CounterContextType {
 const LazyResult = lazy(() => import('./html/Result'));
 export const CounterContext = createContext<CounterContextType|undefined>(undefined);
 const Home = ()=>{
+  const value = useContext(CounterContext);
+  useEffect(()=>{
+    value?.setCounter(()=>0);
+  },[])
   return (
     <div className='main'>
     <div className='header'>
@@ -42,7 +46,7 @@ function App() {
     counter,
     setCounter,
   };
-
+  
   return (
     <CounterContext.Provider value={contextValue}>
       <Routes>

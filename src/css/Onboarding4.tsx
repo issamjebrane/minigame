@@ -9,7 +9,7 @@ export const OnboardingCss4 = () => {
   const [isValueSelected,setIsValueSelected] = useState(false);
   const incrementor = useContext(IncrementingContext);
   const values = useContext(CounterContext);
-  const goodAnswer = "border-style: round";
+  const goodAnswer = "border-radius";
   const answers:string[] = [
     "border-style: round",
     "border-radius",
@@ -22,7 +22,11 @@ export const OnboardingCss4 = () => {
       return;
     }
     if(value === goodAnswer){
-      values?.setCounter(prev=>prev+1);
+      values?.setCounter(prev=>{
+        const count = prev+1;
+        console.log(count)
+        return count
+      });
     }
     incrementor.setIncrementing(prev=>prev+1);
   }

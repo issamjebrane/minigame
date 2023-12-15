@@ -22,7 +22,11 @@ export const OnboardingCss1 = () => {
       return;
     }
     if(value === goodAnswer){
-      values?.setCounter(prev=>prev+1);
+      values?.setCounter(prev=>{
+        const count = prev+1;
+        console.log(count)
+        return count
+      });
     }
     incrementor.setIncrementing(prev=>prev+1);
   }
