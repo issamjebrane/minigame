@@ -12,7 +12,7 @@ Make sure you have Node.js installed on your machine. You can download it [here]
 2. Clone this repository or download the files.
 
     ```bash
-    git clone https://repository-url
+    git clone https://repository-url](https://github.com/issamjebrane/minigame.git
     ```
 
 3. Navigate to the project directory.
